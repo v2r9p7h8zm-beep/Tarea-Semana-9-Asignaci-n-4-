@@ -1,1 +1,84 @@
 
+
+############################################################
+# ZBX1 - UBUNTU SERVER CONFIGURATION
+# CIS NETWORK HARDENING - ITLA
+############################################################
+
+# SYSTEM
+HOSTNAME=ZBX1
+OS="Ubuntu Server 24.04.5 LTS"
+PYTHON_VERSION=3.12.3
+
+# NETWORK INTERFACES
+INTERFACE=enp0s3
+IP_ADDRESS=10.0.2.15
+NETWORK_TYPE=NAT
+
+INTERFACE=enp0s8
+IP_ADDRESS=10.0.3.15
+NETWORK_TYPE=NAT
+
+DEFAULT_GATEWAY=10.0.2.2
+
+############################################################
+# SSH CONFIGURATION
+# /etc/ssh/sshd_config.d/99-cis-hardening.conf
+############################################################
+
+PermitRootLogin no
+MaxAuthTries 4
+X11Forwarding no
+ClientAliveInterval 300
+ClientAliveCountMax 2
+
+############################################################
+# UFW FIREWALL CONFIGURATION
+############################################################
+
+ufw enable
+ufw default deny incoming
+ufw default allow outgoing
+
+ufw allow from 10.0.2.0/24 to any port 22 proto tcp
+ufw allow from 10.0.2.0/24 to any port 80 proto tcp
+
+# FIREWALL STATUS
+Status: active
+Logging: on (low)
+Default: deny (incoming)
+Default: allow (outgoing)
+Default: disabled (routed)
+
+############################################################
+# SSH SERVICE
+############################################################
+
+SERVICE=ssh.service
+STATUS=active (running)
+ENABLED_AT_STARTUP=yes
+
+############################################################
+# CIS AUDIT CONFIGURATION
+############################################################
+
+SCRIPT=~/CIS-Network-Hardening/scripts/ubuntu_cis.py
+
+AUDIT_COMMAND="sudo python3 ~/CIS-Network-Hardening/scripts/ubuntu_cis.py audit"
+
+############################################################
+# FINAL AUDIT RESULTS
+############################################################
+
+PermitRootLogin: PASS
+MaxAuthTries: PASS
+X11Forwarding: PASS
+UFW firewall active: PASS
+Default incoming policy DENY: PASS
+
+PASS: 5
+FAIL: 0
+
+############################################################
+# END OF CONFIGURATION
+############################################################
