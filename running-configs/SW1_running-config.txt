@@ -1,1 +1,65 @@
 
+Bridges y puertos
+OpenvSwitch-1:/# ovs-vsctl show
+51aa9f07-56f0-49bf-b36d-7e823ae11aa5
+    Bridge br2
+        datapath_type: netdev
+        Port br2
+            Interface br2
+                type: internal
+    Bridge br3
+        datapath_type: netdev
+        Port br3
+            Interface br3
+                type: internal
+    Bridge br0
+        datapath_type: netdev
+        Port eth9
+            Interface eth9
+        Port eth8
+            Interface eth8
+        Port eth15
+            Interface eth15
+        Port eth1
+            Interface eth1
+        Port eth0
+            Interface eth0
+        Port eth7
+            Interface eth7
+        Port eth4
+            Interface eth4
+        Port eth11
+            Interface eth11
+        Port eth3
+            Interface eth3
+        Port eth13
+            Interface eth13
+        Port eth12
+            Interface eth12
+        Port eth2
+            Interface eth2
+        Port eth10
+            Interface eth10
+        Port eth6
+            Interface eth6
+        Port br0
+            Interface br0
+                type: internal
+        Port eth14
+            Interface eth14
+        Port eth5
+            Interface eth5
+    Bridge br1
+        datapath_type: netdev
+        Port br1
+            Interface br1
+                type: internal
+
+
+Reglas OpenFlow
+OpenvSwitch-1:/# ovs-ofctl -O OpenFlow13 dump-flows br0
+ cookie=0x0, duration=830.465s, table=0, n_packets=20, n_bytes=1892, priority=100,in_port=eth2,dl_src=00:50:79:66:68:01 actions=NORMAL
+ cookie=0x0, duration=758.369s, table=0, n_packets=11, n_bytes=1044, priority=100,in_port=eth1,dl_src=00:50:79:66:68:00 actions=NORMAL
+ cookie=0x0, duration=826.581s, table=0, n_packets=5, n_bytes=490, priority=90,in_port=eth1 actions=drop
+ cookie=0x0, duration=823.775s, table=0, n_packets=0, n_bytes=0, priority=90,in_port=eth2 actions=drop
+ cookie=0x0, duration=12620.738s, table=0, n_packets=10514, n_bytes=1415125, priority=0 actions=NORMAL
