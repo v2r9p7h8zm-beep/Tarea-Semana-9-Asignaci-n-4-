@@ -1,0 +1,24 @@
+
+PC1> show ip
+
+NAME        : PC1[1]
+IP/MASK     : 192.168.60.21/24
+GATEWAY     : 192.168.60.1
+DNS         :
+MAC         : 00:50:79:66:68:00
+LPORT       : 20006
+RHOST:PORT  : 127.0.0.1:20007
+MTU         : 1500
+
+
+PC2> show ip
+
+NAME        : PC2[1]
+IP/MASK     : 192.168.60.22/24
+GATEWAY     : 192.168.60.1
+DNS         :
+MAC         : 00:50:79:66:68:01
+LPORT       : 20008
+RHOST:PORT  : 127.0.0.1:20009
+MTU         : 1500
+
