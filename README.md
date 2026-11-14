@@ -1,4 +1,5 @@
 CIS Network Hardening — GNS3
+<img width="360" height="281" alt="image" src="https://github.com/user-attachments/assets/3ea5257a-4808-4741-b5c3-d6c61d87daee" />
 
 Jennifer Lopez Paulino
 Matrícula: 20240860
